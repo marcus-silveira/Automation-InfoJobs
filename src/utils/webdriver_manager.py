@@ -12,7 +12,8 @@ class WebDriverManager:
 
         if incognito:
             self.chrome_options.add_argument('--incognito')
-
+            
+        self.chrome_options.add_argument('--start-maximized')
         self.driver = webdriver.Chrome(options=self.chrome_options, service=self.service)
 
     def get_driver(self):

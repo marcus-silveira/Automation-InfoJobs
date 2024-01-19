@@ -41,8 +41,8 @@ class FindJobs:
 
         self.driver.find_element(By.XPATH, '//*[@id="city"]').click()
         self.driver.find_element(By.XPATH, '//*[@id="city"]').click()
-        self.driver.find_element(By.XPATH, '//*[@id="city"]').clear()
         sleep(1)
+        self.driver.find_element(By.XPATH, '//*[@id="city"]').clear()
         self.driver.find_element(
             By.XPATH, '/html/body/main/div[1]/section/div[1]/div[4]/a').click()
 
@@ -56,9 +56,10 @@ class FindJobs:
                 self.driver.get(f"https://www.infojobs.com.br/vagas-de-emprego-{keyword}-home_office.aspx?page={page}")
 
             self.driver.get(f"https://www.infojobs.com.br/vagas-de-emprego-{keyword}.aspx?page={page}")
-            jobs = self.driver.find_elements(By.CSS_SELECTOR, "[class='card card-shadow card-shadow-hover text-break mb-16 grid-row js_rowCard']")
+            jobs = self.driver.find_elements(By.CSS_SELECTOR, "[class='card card-shadow card-shadow-hover text-break mb-16 grid-row js_rowCard ']")
+            self.driver.find_element(By.LINK_TEXT, "CANDIDATAR-ME").click()
             for job in jobs:
-                print("xxxxxxxxxx")
                 job.click()
-                sleep(10)
-
+                sleep(1)
+                self.driver.find_element(By.LINK_TEXT, "CANDIDATAR-ME").click()
+                sleep(1)
